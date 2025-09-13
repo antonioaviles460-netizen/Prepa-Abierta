@@ -1,0 +1,488 @@
+/*General Reset*/
+/* Variables de Color Minimalistas */
+:root {
+    --primary-color: #3f51b5; /* Un azul más suave */
+    --accent-color: #ff9800; /* Naranja para detalles o botones */
+    --text-color-dark: #333333;
+    --text-color-light: #555555;
+    --background-light: #fdfdfd; /* Blanco casi puro para el fondo */
+    --background-gray: #f2f2f2; /* Un gris muy claro para secciones */
+    --border-color: #e0e0e0; /* Borde sutil */
+    --white-color: #ffffff;
+    --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.08); /* Sombra muy sutil */
+}
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif; /* Fuente limpia y moderna */
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    color: var(--text-color-light);
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1000px; /* Ancho un poco más contenido */
+    margin: 0 auto;
+    padding: 0 25px; /* Más padding lateral */
+}
+
+/* Encabezado (Header) */
+header {
+    background-color: var(--white-color);
+    padding: 1rem 0;
+    box-shadow: var(--shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header nav ul li {
+    margin-left: 25px; /* Más espacio entre ítems */
+}
+
+header nav ul li a {
+    color: var(--text-color-light);
+    text-decoration: none;
+    font-weight: 400; /* Menos negrita */
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Carrusel de Fotos (Hero Slider) */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Altura del carrusel */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Transición de desvanecimiento */
+    z-index: 0;
+}
+
+.slider-image.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.hero-slider .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Capa oscura */
+    z-index: 2;
+}
+
+.slider-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: var(--white-color);
+    padding: 20px;
+}
+
+.slider-content h2 {
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    color: var(--white-color); /* Asegura que el título sea blanco */
+}
+
+.slider-content p {
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    color: var(--white-color); /* Asegura que el párrafo sea blanco */
+}
+
+/* Flechas de Navegación */
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    color: var(--white-color);
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 4;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.slider-nav:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.slider-nav.prev {
+    left: 20px;
+}
+
+.slider-nav.next {
+    right: 20px;
+}
+
+/* Puntos Indicadores */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    z-index: 4;
+    text-align: center;
+    width: 100%;
+}
+
+.slider-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slider-dot.active {
+    background-color: var(--white-color);
+}
+/* Formulario */
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto;
+  padding: 10px;
+  max-width: 1300px;
+  width: 100%;
+  overflow: auto;
+}
+
+iframe {
+  width: 100%;
+  max-width: 1300px;
+  height: 2033px;
+  border: none;
+}
+
+/* Ajustes Responsive para el Slider */
+@media (max-width: 768px) {
+    .hero-slider {
+        height: 400px;
+    }
+    .slider-content h2 {
+        font-size: 2.5rem;
+    }
+    .slider-content p {
+        font-size: 1.2rem;
+    }
+    .slider-nav {
+        padding: 10px 15px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-slider {
+        height: 300px;
+    }
+    .slider-content h2 {
+        font-size: 2rem;
+    }
+    .slider-content p {
+        font-size: 1rem;
+    }
+    .slider-nav {
+        display: none; /* Ocultar flechas en pantallas muy pequeñas */
+    }
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--white-color);
+    padding: 14px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.15rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #e68a00; /* Tono más oscuro de accent-color */
+    transform: translateY(-2px);
+}
+
+/* Secciones de Contenido */
+.content-section {
+    padding: 80px 0; /* Más espacio vertical */
+    background-color: var(--white-color); /* Fondo blanco por defecto */
+    margin-bottom: 30px; /* Más espacio entre secciones */
+    border-radius: 8px;
+    box-shadow: var(--shadow-light); /* Sombra muy sutil */
+}
+
+/* Alternar colores de fondo para las secciones para un efecto sutil */
+.content-section:nth-of-type(even) { /* Secciones pares */
+    background-color: var(--background-gray);
+}
+
+
+.content-section h2 {
+    color: var(--text-color-dark);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.content-section h2::after {
+    content: '';
+    display: block;
+    width: 70px; /* Línea un poco más larga */
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-align: justify;
+    color: var(--text-color-light);
+}
+
+.content-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0; /* Más espacio */
+}
+
+.content-section ul li {
+    background-color: var(--background-light);
+    border-left: 3px solid var(--primary-color); /* Borde más delgado */
+    padding: 12px 20px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra muy sutil para ítems */
+}
+
+.content-section ul li strong {
+    color: var(--primary-color);
+}
+
+/* Clase para el texto de atención en Requisitos */
+.importante {
+    background-color: #fffde7; /* Amarillo muy claro */
+    color: #a1887f; /* Gris-marrón para el texto */
+    border: 1px solid #ffe0b2; /* Borde más suave */
+    padding: 18px;
+    border-radius: 6px;
+    margin-top: 25px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--shadow-light);
+}
+
+.importante::before {
+    content: '❗️'; /* Un icono de exclamación más minimalista */
+    font-size: 1.6rem;
+}
+
+/* Integración de Imágenes en secciones (opcional) */
+.content-with-image {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Espacio entre texto e imagen */
+    margin-top: 40px;
+    flex-wrap: wrap; /* Para que se apilen en móviles */
+}
+
+.content-with-image.reverse { /* Para imagen a la izquierda y texto a la derecha */
+    flex-direction: row-reverse;
+}
+
+.content-with-image .text-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.content-with-image .image-wrapper {
+    flex: 0 0 350px; /* Ancho fijo para la imagen */
+    height: 250px;
+    background-color: var(--background-gray); /* Placeholder si no hay imagen */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+}
+
+.content-with-image .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen para que cubra el espacio */
+    display: block;
+}
+
+/* Espacio para Google Forms */
+.google-form-embed {
+    background-color: var(--background-gray);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px dashed var(--border-color);
+    text-align: center;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.google-form-embed p {
+    font-style: italic;
+    color: var(--text-color-light);
+    margin-bottom: 25px;
+}
+
+/* Pie de página (Footer) */
+footer {
+    background-color: var(--text-color-dark); /* Color oscuro para el contraste */
+    color: var(--white-color);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 50px;
+    font-size: 0.95rem;
+}
+
+/* Responsive Design (Adaptaciones para el nuevo diseño) */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    header nav ul {
+        margin-top: 20px;
+        justify-content: center;
+    }
+    header nav ul li {
+        margin: 0 10px 10px 10px; /* Espacio abajo también en móvil */
+    }
+    .hero {
+        padding: 80px 20px;
+        min-height: 350px;
+    }
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+    .hero p {
+        font-size: 1.2rem;
+    }
+    .content-section {
+        padding: 60px 0;
+    }
+    .content-section h2 {
+        font-size: 2rem;
+    }
+    .content-with-image {
+        flex-direction: column; /* Apilar en móviles */
+        gap: 30px;
+    }
+    .content-with-image.reverse {
+        flex-direction: column; /* También apilar */
+    }
+    .content-with-image .image-wrapper {
+        flex: none; /* Desactivar flex-basis */
+        width: 100%; /* Ocupar todo el ancho */
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    header h1 {
+        font-size: 1.4rem;
+    }
+    header nav ul li {
+        margin: 5px 6px;
+        font-size: 0.85rem;
+    }
+    .hero h2 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    .content-section {
+        padding: 40px 0;
+    }
+    .content-section h2 {
+        font-size: 1.6rem;
+    }
+    .content-section p, .content-section ul li {
+        font-size: 0.95rem;
+    }
+    .importante {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+}
